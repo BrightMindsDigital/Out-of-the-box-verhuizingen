@@ -25,6 +25,8 @@
 <link rel="stylesheet" href="pages.css" />
 <link rel="icon" type="image/png" href="assets/logo-mark.png" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"MovingCompany","name":"Out Of The Box Verhuizingen","url":"https://www.outofthebox-verhuizingen.nl","logo":"https://www.outofthebox-verhuizingen.nl/assets/logo.png","image":"https://www.outofthebox-verhuizingen.nl/assets/logo.png","description":"Zakelijke verhuis- en transportpartner voor keuken- en meubelretailers.","telephone":"+31618884241","email":"info@outofthebox-verhuizingen.nl","address":{"@type":"PostalAddress","streetAddress":"Philipstraat 12","postalCode":"2722 NA","addressLocality":"Zoetermeer","addressCountry":"NL"},"areaServed":[{"@type":"Country","name":"Nederland"},{"@type":"Place","name":"Europa"}],"identifier":"KvK 78626676"}</script>
+<style>.hp{position:absolute!important;left:-9999px!important;opacity:0!important}.chips .chip{background:transparent;-webkit-appearance:none;appearance:none;font:inherit;cursor:pointer}.chip.aan{background:#0A4A98;border-color:#0A4A98;color:#fff}.form-melding{margin-top:16px;padding:14px 16px;border-radius:10px;font-size:15px;line-height:1.5}.form-melding.ok{background:#E8F3E8;color:#1E5B2A;border:1px solid #BEDCC2}.form-melding.fout{background:#FBEAEA;color:#8A2222;border:1px solid #EDC5C5}</style>
+<script src="form.js" defer></script>
 </head>
 <body>
 
@@ -164,16 +166,21 @@
             <div style="display:flex;align-items:center;gap:12px;color:#d6e4f5;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke="#9ec3f0" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg> info@outofthebox-verhuizingen.nl</div>
           </div>
         </div>
-        <form class="cta-card reveal" onsubmit="return false;">
+        <form class="cta-card reveal" data-web3form="1" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="d36a0bbb-245b-42b8-a877-a4b57c1f3456" />
+        <input type="hidden" name="subject" value="Nieuwe partneraanvraag via de website" />
+        <input type="hidden" name="from_name" value="Out Of The Box website" />
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" />
           <h3>Partner worden</h3>
           <p class="sub">We nemen binnen één werkdag contact op.</p>
-          <div class="field"><label>Naam</label><input type="text" placeholder="Uw naam" /></div>
-          <div class="field"><label>Bedrijf</label><input type="text" placeholder="Bedrijfsnaam" /></div>
-          <div class="field"><label>E-mail</label><input type="email" placeholder="naam@bedrijf.nl" /></div>
-          <div class="field"><label>Geschat volume per maand</label>
-            <select><option>Minder dan 50 leveringen</option><option>50–200 leveringen</option><option>200–500 leveringen</option><option>Meer dan 500 leveringen</option></select>
+          <div class="field"><label for="zNaam">Naam</label><input id="zNaam" name="Naam" type="text" placeholder="Uw naam" required /></div>
+          <div class="field"><label for="zBedrijf">Bedrijf</label><input id="zBedrijf" name="Bedrijf" type="text" placeholder="Bedrijfsnaam" /></div>
+          <div class="field"><label for="zMail">E-mail</label><input id="zMail" name="E-mail" type="email" placeholder="naam@bedrijf.nl" required /></div>
+          <div class="field"><label for="zVolume">Geschat volume per maand</label>
+            <select id="zVolume" name="Geschat volume per maand"><option>Minder dan 50 leveringen</option><option>50–200 leveringen</option><option>200–500 leveringen</option><option>Meer dan 500 leveringen</option></select>
           </div>
-          <button class="btn btn-primary" style="width:100%;margin-top:6px;">Plan kennismaking</button>
+          <div class="form-melding" role="status" hidden="hidden"></div>
+          <button type="submit" class="btn btn-primary" style="width:100%;margin-top:6px;">Plan kennismaking</button>
         </form>
       </div>
     </div>
