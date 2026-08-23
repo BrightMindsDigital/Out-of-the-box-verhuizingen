@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Out of the Box — Stijlgids voor Divi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --blue:#0a4a98;--blue-dark:#083878;--blue-darker:#06264f;--blue-bright:#2868b8;
+    --blue-tint:#eaf1fa;--blue-tint-2:#dbe7f6;
+    --ink:#14181f;--ink-2:#2b313b;--slate:#5b6573;--slate-2:#8a94a3;
+    --line:#e4e9f0;--line-2:#eef2f7;--mist:#f5f7fa;
+    --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --body:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+    --mono:"Spline Sans Mono",ui-monospace,monospace;
+    --shadow-sm:0 1px 2px rgba(16,32,64,.05),0 2px 6px rgba(16,32,64,.04);
+    --shadow-md:0 8px 24px rgba(16,32,64,.08),0 2px 6px rgba(16,32,64,.05);
+    --shadow-lg:0 24px 60px rgba(8,40,96,.16),0 8px 20px rgba(8,40,96,.08);
+    --shadow-blue:0 16px 36px rgba(10,74,152,.30);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:var(--body);color:var(--ink);background:var(--mist);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.02em;margin:0;}
+  code{font-family:var(--mono);font-size:.86em;background:#fff;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--blue-dark);white-space:nowrap;}
+  .mono{font-family:var(--mono);}
+
+  /* masthead */
+  .mast{background:linear-gradient(135deg,var(--blue),var(--blue-darker));color:#fff;padding:60px 0 54px;}
+  .wrap{max-width:1040px;margin-inline:auto;padding-inline:28px;}
+  .mast .ey{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#9ec3f0;}
+  .mast h1{font-size:clamp(34px,5vw,52px);font-weight:800;margin:14px 0 12px;}
+  .mast p{color:#d6e4f5;max-width:60ch;font-size:18px;}
+  .mast .meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:26px;font-size:13.5px;color:#b9cee8;}
+  .mast .meta b{color:#fff;font-family:var(--display);}
+
+  /* section shell */
+  section.block{padding:46px 0;border-bottom:1px solid var(--line);}
+  .block > .wrap > .head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+  .block .num{font-family:var(--mono);font-size:13px;color:var(--blue);font-weight:500;}
+  .block h2{font-size:26px;font-weight:800;}
+  .block .sub{color:var(--slate);font-size:15px;margin:-16px 0 26px;max-width:64ch;}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow-sm);}
+  .grid{display:grid;gap:16px;}
+
+  /* colour swatches */
+  .swatches{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));}
+  .sw .chip{height:84px;border-radius:12px 12px 0 0;border:1px solid var(--line);border-bottom:none;}
+  .sw .meta{border:1px solid var(--line);border-radius:0 0 12px 12px;padding:12px 14px;background:#fff;}
+  .sw .nm{font-family:var(--display);font-weight:700;font-size:14px;}
+  .sw .hx{font-family:var(--mono);font-size:12.5px;color:var(--slate);margin-top:2px;text-transform:uppercase;}
+  .sw .role{font-size:12px;color:var(--slate-2);margin-top:4px;}
+
+  /* type specimens */
+  .type-row{display:grid;grid-template-columns:1fr;gap:6px;padding:20px 0;border-top:1px dashed var(--line);}
+  .type-row:first-child{border-top:none;}
+  .type-row .spec{font-family:var(--mono);font-size:12px;color:var(--slate);display:flex;gap:14px;flex-wrap:wrap;}
+  .type-row .spec b{color:var(--blue-dark);font-weight:500;}
+  .specimen{color:var(--ink);}
+
+  /* tables */
+  table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line-2);vertical-align:top;}
+  th{font-family:var(--display);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);background:var(--mist);}
+  tr:last-child td{border-bottom:none;}
+  td code{white-space:normal;}
+  td .name{font-family:var(--display);font-weight:700;color:var(--ink);}
+
+  /* shadow chips */
+  .shadows{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));}
+  .shadow-demo{background:#fff;border-radius:14px;height:90px;margin-bottom:16px;}
+  .sh code{white-space:normal;display:block;line-height:1.7;}
+
+  /* button demo */
+  .btns{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:16px;padding:15px 26px;border-radius:999px;border:2px solid transparent;cursor:default;line-height:1;}
+  .btn-primary{background:var(--blue);color:#fff;box-shadow:var(--shadow-blue);}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line);}
+  .btn-light{background:#fff;color:var(--blue-dark);border-color:var(--line);}
+  .on-dark{background:var(--blue-darker);padding:22px;border-radius:14px;}
+  .btn-outline-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.4);}
+
+  /* component demos */
+  .pill{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:var(--blue-tint);color:var(--blue-dark);font-family:var(--display);font-weight:600;font-size:13.5px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);}
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--blue);}
+  .demo-field{max-width:320px;}
+  .demo-field label{display:block;font-family:var(--display);font-weight:600;font-size:13px;color:var(--ink-2);margin-bottom:6px;}
+  .demo-field input{width:100%;font-family:var(--body);font-size:15px;color:var(--ink);padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--mist);}
+  .statnum{font-family:var(--display);font-weight:800;font-size:60px;line-height:1;letter-spacing:-.03em;color:var(--blue);}
+  .statnum .u{color:var(--blue-bright);}
+
+  .two{grid-template-columns:1fr 1fr;}
+  @media(max-width:760px){.two{grid-template-columns:1fr;}}
+  .note{background:var(--blue-tint);border:1px solid var(--blue-tint-2);border-radius:12px;padding:14px 16px;font-size:14px;color:var(--blue-dark);}
+  .note b{font-family:var(--display);}
+</style>
+</head>
+<body>
+
+<div class="mast">
+  <div class="wrap">
+    <div class="ey">Out of the Box · Verhuizingen &amp; Transport</div>
+    <h1>Stijlgids voor Divi</h1>
+    <p>Alle ontwerpwaarden om de site pixel-perfect na te bouwen in de Divi-editor. Waarden zijn vast (px); waar het ontwerp responsief schaalt staat <b>desktop / mobiel</b> vermeld.</p>
+    <div class="meta">
+      <span><b>Lettertypes</b> · Archivo + Hanken Grotesk</span>
+      <span><b>Basiskleur</b> · #0A4A98</span>
+      <span><b>Container</b> · 1200px</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 FONTS -->
+<section class="block">
+  <div class="wrap">
+    <div class="head"><span class="num">01</span><h2>Lettertypes</h2></div>
+    <p class="sub">Twee Google Fonts. Voeg ze in Divi toe via <code>Divi → Theme Options → General → Custom Fonts</code> of selecteer ze in de module-instellingen (beide staan in de Google Fonts-lijst van Divi).</p>
+    <div class="grid two">
+      <div class="card">
+        <div style="font-family:var(--display);font-weight:800;font-size:40px;letter-spacing:-.02em;">Archivo</div>
+        <p style="color:var(--slate);font-size:14px;margin:10px 0 14px;">Koppen, knoppen, labels, navigatie, cijfers — alles met karakter.</p>
+        <div class="spec mono" style="font-size:12.5px;color:var(--slate);">Gewichten: <b style="color:var(--blue-dark)">600 · 700 · 800 · 900</b></div>
+        <div style="margin-top:6px;font-size:34px;font-family:var(--display);font-weight:900;">AaBbCc 0123</div>
+      </div>
+      <div class="card">
+        <div style="font-family:var(--body);font-weight:700;font-size:40px;">Hanken Grotesk</div>
+        <p style="color:var(--slate);font-size:14px;margin:10px 0 14px;">Bodytekst, paragrafen, formuliervelden.</p>
+        <div class="spec mono" style="font-size:12.5px;color:var(--slate);">Gewichten: <b style="color:var(--blue-dark)">400 · 500 · 600 · 700</b></div>
+        <div style="margin-top:6px;font-size:34px;font-family:var(--body);font-weight:400;">AaBbCc 0123</div>
+      </div>
+    </div>
+    <div class="note" style="margin-top:16px;"><b>Mono-accent (optioneel):</b> <code>Spline Sans Mono</code> 400/500 — alleen gebruikt voor kleine technische labels en placeholders.</div>
+  </div>
+</section>
+
+<!-- 02 COLORS -->
+<section class="block">
+  <div class="wrap">
+    <div class="head"><span class="num">02</span><h2>Kleuren</h2></div>
+    <p class="sub">Zet deze als globale kleuren in Divi (<code>kleurkiezer → globaal</code>) zodat je ze overal hergebruikt.</p>
+
+    <h3 style="font-size:15px;color:var(--slate);font-weight:700;margin:8px 0 14px;text-transform:uppercase;letter-spacing:.06em;">Merkblauw</h3>
+    <div class="grid swatches">
+      <div class="sw"><div class="chip" style="background:#0a4a98"></div><div class="meta"><div class="nm">Blue</div><div class="hx">#0A4A98</div><div class="role">Primair · knoppen, links, accenten</div></div></div>
+      <div class="sw"><div class="chip" style="background:#083878"></div><div class="meta"><div class="nm">Blue Dark</div><div class="hx">#083878</div><div class="role">Hover, gradients, tekst op tint</div></div></div>
+      <div class="sw"><div class="chip" style="background:#06264f"></div><div class="meta"><div class="nm">Blue Darker</div><div class="hx">#06264F</div><div class="role">Footer, topbar, diepe vlakken</div></div></div>
+      <div class="sw"><div class="chip" style="background:#2868b8"></div><div class="meta"><div class="nm">Blue Bright</div><div class="hx">#2868B8</div><div class="role">Eenheden in cijfers (%/+)</div></div></div>
+      <div class="sw"><div class="chip" style="background:#eaf1fa"></div><div class="meta"><div class="nm">Blue Tint</div><div class="hx">#EAF1FA</div><div class="role">Iconvlakken, pill-achtergrond</div></div></div>
+      <div class="sw"><div class="chip" style="background:#dbe7f6"></div><div class="meta"><div class="nm">Blue Tint 2</div><div class="hx">#DBE7F6</div><div class="role">Randen bij hover, lijnen</div></div></div>
+    </div>
+
+    <h3 style="font-size:15px;color:var(--slate);font-weight:700;margin:28px 0 14px;text-transform:uppercase;letter-spacing:.06em;">Neutralen</h3>
+    <div class="grid swatches">
+      <div class="sw"><div class="chip" style="background:#14181f"></div><div class="meta"><div class="nm">Ink</div><div class="hx">#14181F</div><div class="role">Koppen &amp; hoofdtekst</div></div></div>
+      <div class="sw"><div class="chip" style="background:#2b313b"></div><div class="meta"><div class="nm">Ink 2</div><div class="hx">#2B313B</div><div class="role">Subtekst, nav-links, labels</div></div></div>
+      <div class="sw"><div class="chip" style="background:#5b6573"></div><div class="meta"><div class="nm">Slate</div><div class="hx">#5B6573</div><div class="role">Paragrafen, secundaire tekst</div></div></div>
+      <div class="sw"><div class="chip" style="background:#8a94a3"></div><div class="meta"><div class="nm">Slate 2</div><div class="hx">#8A94A3</div><div class="role">Gedempte labels</div></div></div>
+      <div class="sw"><div class="chip" style="background:#e4e9f0"></div><div class="meta"><div class="nm">Line</div><div class="hx">#E4E9F0</div><div class="role">Randen, scheidingslijnen</div></div></div>
+      <div class="sw"><div class="chip" style="background:#eef2f7"></div><div class="meta"><div class="nm">Line 2</div><div class="hx">#EEF2F7</div><div class="role">Subtiele lijnen</div></div></div>
+      <div class="sw"><div class="chip" style="background:#f5f7fa"></div><div class="meta"><div class="nm">Mist</div><div class="hx">#F5F7FA</div><div class="role">Sectie-achtergrond (om&nbsp;en&nbsp;om)</div></div></div>
+      <div class="sw"><div class="chip" style="background:#ffffff"></div><div class="meta"><div class="nm">Paper</div><div class="hx">#FFFFFF</div><div class="role">Basis-achtergrond, kaarten</div></div></div>
+    </div>
+
+    <h3 style="font-size:15px;color:var(--slate);font-weight:700;margin:28px 0 14px;text-transform:uppercase;letter-spacing:.06em;">Tekstkleuren op donkere vlakken</h3>
+    <div class="grid swatches">
+      <div class="sw"><div class="chip" style="background:#cfe0f4"></div><div class="meta"><div class="nm">Topbar-tekst</div><div class="hx">#CFE0F4</div></div></div>
+      <div class="sw"><div class="chip" style="background:#9ec3f0"></div><div class="meta"><div class="nm">Eyebrow op donker</div><div class="hx">#9EC3F0</div></div></div>
+      <div class="sw"><div class="chip" style="background:#b9cee8"></div><div class="meta"><div class="nm">Stat-label</div><div class="hx">#B9CEE8</div></div></div>
+      <div class="sw"><div class="chip" style="background:#d6e4f5"></div><div class="meta"><div class="nm">CTA-tekst</div><div class="hx">#D6E4F5</div></div></div>
+      <div class="sw"><div class="chip" style="background:#aebfd6"></div><div class="meta"><div class="nm">Footer-tekst</div><div class="hx">#AEBFD6</div></div></div>
+      <div class="sw"><div class="chip" style="background:#6fa8e8"></div><div class="meta"><div class="nm">Footer-icoon</div><div class="hx">#6FA8E8</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 GRADIENTS / BACKGROUNDS -->
+<section class="block">
+  <div class="wrap">
+    <div class="head"><span class="num">03</span><h2>Sectie-achtergronden &amp; gradients</h2></div>
+    <div class="grid two">
+      <div class="card" style="padding:0;overflow:hidden;">
+        <div style="height:90px;background:linear-gradient(135deg,#083878,#06264f);"></div>
+        <div style="padding:16px 18px;"><div class="sw" style="display:contents"></div><div style="font-family:var(--display);font-weight:700;">Stats-balk</div><code>linear-gradient(135deg, #083878, #06264F)</code></div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <div style="height:90px;background:linear-gradient(135deg,#0a4a98,#083878);"></div>
+        <div style="padding:16px 18px;"><div style="font-family:var(--display);font-weight:700;">CTA-blok</div><code>linear-gradient(135deg, #0A4A98, #083878)</code></div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <div style="height:90px;background:#14181f;"></div>
+        <div style="padding:16px 18px;"><div style="font-family:var(--display);font-weight:700;">Case-sectie (donker)</div><code>#14181F</code></div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <div style="height:90px;background:#f5f7fa;border-bottom:1px solid var(--line);"></div>
+        <div style="padding:16px 18px;"><div style="font-family:var(--display);font-weight:700;">Lichte sectie (om en om)</div><code>#F5F7FA</code></div>
+      </div>
+    </div>
+    <div class="note" style="margin-top:16px;"><b>Ritme:</b> wissel witte secties (<code>#FFFFFF</code>) af met mist (<code>#F5F7FA</code>). Donkere accenten (stats, case, footer) breken het ritme. Gebruik max. 1–2 donkere blokken per pagina.</div>
+  </div>
+</section>
+
+<!-- 04 TYPOGRAPHY SCALE -->
+<section class="block">
+  <div class="wrap">
+    <div class="head"><span class="num">04</span><h2>Typografie-schaal</h2></div>
+    <p class="sub">Stel in Divi de <b>desktop</b>-grootte in en de <b>telefoon</b>-grootte op de kleinere waarde (tablet ertussenin). Alle koppen: Archivo, gewicht 800, regelafstand 1.04, letter-spacing −0.02em.</p>
+
+    <div class="card">
+      <div class="type-row">
+        <div class="specimen" style="font-family:var(--display);font-weight:800;letter-spacing:-.02em;line-height:1.04;font-size:clamp(38px,6vw,74px);">Display / Hero-titel</div>
+        <div class="spec"><span>klasse <b>.h-xl</b></span><span>desktop <b>74px</b></span><span>mobiel <b>38px</b></span><span>gewicht <b>800</b></span><span>lh <b>1.04</b></span><span>tracking <b>−0.02em</b></span></div>
+      </div>
+      <div class="type-row">
+        <div class="specimen" style="font-family:var(--display);font-weight:800;letter-spacing:-.02em;line-height:1.04;font-size:clamp(30px,4.4vw,52px);">Sectiekop (groot)</div>
+        <div class="spec"><span>klasse <b>.h-lg</b></span><span>desktop <b>52px</b></span><span>mobiel <b>30px</b></span><span>gewicht <b>800</b></span><span>lh <b>1.04</b></span></div>
+      </div>
+      <div class="type-row">
+        <div class="specimen" style="font-family:var(--display);font-weight:800;letter-spacing:-.02em;line-height:1.04;font-size:clamp(24px,3vw,36px);">Sectiekop (medium)</div>
+        <div class="spec"><span>klasse <b>.h-md</b></span><span>desktop <b>36px</b></span><span>mobiel <b>24px</b></span><span>gewicht <b>800</b></span></div>
+      </div>
+      <div class="type-row">
+        <div class="specimen" style="font-family:var(--display);font-weight:700;font-size:24px;">Kaart-titel (h3)</div>
+        <div class="spec"><span>service-kaart</span><span><b>24px</b></span><span>gewicht <b>700/800</b></span></div>
+      </div>
+      <div class="type-row">
+        <div class="specimen" style="font-family:var(--display);font-weight:700;font-size:19px;">Subkop (h4)</div>
+        <div class="spec"><span>stap/feature-titel</span><span><b>18–19px</b></span><span>gewicht <b>700</b></span></div>
+      </div>
+      <div class="type-row">
+        <div class="specimen" style="font-family:var(--body);font-size:21px;color:var(--slate);line-height:1.65;">Lede / intro-paragraaf — iets groter, kleur Slate.</div>
+        <div class="spec"><span>klasse <b>.lede</b></span><span>desktop <b>21px</b></span><span>mobiel <b>18px</b></span><span>kleur <b>#5B6573</b></span><span>lh <b>1.65</b></span></div>
+      </div>
+      <div class="type-row">
+        <div class="specimen" style="font-family:var(--body);font-size:17px;line-height:1.6;">Bodytekst — standaard paragraaftekst zoals deze regel.</div>
+        <div class="spec"><span>body</span><span>desktop <b>17px</b></span><span>mobiel <b>16px</b></span><span>kleur <b>#14181F</b></span><span>lh <b>1.6</b></span></div>
+      </div>
+      <div class="type-row">
+        <div class="specimen"><span class="eyebrow">Eyebrow label</span></div>
+        <div class="spec"><span>klasse <b>.eyebrow</b></span><span><b>13px</b></span><span>gewicht <b>700</b></span><span>UPPERCASE</span><span>tracking <b>0.14em</b></span><span>kleur <b>#0A4A98</b></span><span>+ streepje 22×2px</span></div>
+      </div>
+      <div class="type-row">
+        <div class="specimen mono" style="font-size:13px;color:var(--slate);text-transform:uppercase;letter-spacing:.08em;">Klein label / mono</div>
+        <div class="spec"><span>Spline Sans Mono</span><span><b>10–13px</b></span><span>tracking <b>0.06–0.12em</b></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 SHADOWS -->
+<section class="block">
+  <div class="wrap">
+    <div class="head"><span class="num">05</span><h2>Schaduwen (box-shadow)</h2></div>
+    <p class="sub">In Divi: <code>module → Design → Box Shadow</code>. Bij dubbele schaduwen het sterkste paar invoeren, of plak de string in custom CSS.</p>
+    <div class="grid shadows">
+      <div class="card sh"><div class="shadow-demo" style="box-shadow:var(--shadow-sm)"></div><div class="name" style="font-family:var(--display);font-weight:700;margin-bottom:6px;">Small</div><code>0 1px 2px rgba(16,32,64,.05),
+0 2px 6px rgba(16,32,64,.04)</code><p style="font-size:12.5px;color:var(--slate);margin-top:8px;">Sticky header, kleine kaarten</p></div>
+      <div class="card sh"><div class="shadow-demo" style="box-shadow:var(--shadow-md)"></div><div class="name" style="font-family:var(--display);font-weight:700;margin-bottom:6px;">Medium</div><code>0 8px 24px rgba(16,32,64,.08),
+0 2px 6px rgba(16,32,64,.05)</code><p style="font-size:12.5px;color:var(--slate);margin-top:8px;">Kaart-hover, badges, media</p></div>
+      <div class="card sh"><div class="shadow-demo" style="box-shadow:var(--shadow-lg)"></div><div class="name" style="font-family:var(--display);font-weight:700;margin-bottom:6px;">Large</div><code>0 24px 60px rgba(8,40,96,.16),
+0 8px 20px rgba(8,40,96,.08)</code><p style="font-size:12.5px;color:var(--slate);margin-top:8px;">Hero-beeld, formulierkaart</p></div>
+      <div class="card sh"><div class="shadow-demo" style="box-shadow:var(--shadow-blue)"></div><div class="name" style="font-family:var(--display);font-weight:700;margin-bottom:6px;">Blue glow</div><code>0 16px 36px rgba(10,74,152,.30)</code><p style="font-size:12.5px;color:var(--slate);margin-top:8px;">Primaire knoppen, ronde nummers</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 RADIUS + SPACING -->
+<section class="block">
+  <div class="wrap">
+    <div class="head"><span class="num">06</span><h2>Hoekradius &amp; spacing</h2></div>
+    <div class="grid two">
+      <div>
+        <h3 style="font-size:15px;color:var(--slate);font-weight:700;margin:0 0 14px;text-transform:uppercase;letter-spacing:.06em;">Border-radius</h3>
+        <table>
+          <tr><th>Rol</th><th>Waarde</th></tr>
+          <tr><td class="name">Klein (velden, kleine kaart)</td><td><code>10px</code></td></tr>
+          <tr><td class="name">Standaard (kaart, badge)</td><td><code>14px</code></td></tr>
+          <tr><td class="name">Groot (grote kaarten, CTA)</td><td><code>22px</code></td></tr>
+          <tr><td class="name">Pill / knop / chip</td><td><code>999px</code></td></tr>
+          <tr><td class="name">Icoonvlak</td><td><code>11–12px</code></td></tr>
+        </table>
+      </div>
+      <div>
+        <h3 style="font-size:15px;color:var(--slate);font-weight:700;margin:0 0 14px;text-transform:uppercase;letter-spacing:.06em;">Spacing &amp; layout</h3>
+        <table>
+          <tr><th>Element</th><th>Desktop / mobiel</th></tr>
+          <tr><td class="name">Sectie-padding (boven/onder)</td><td><code>132px / 64px</code></td></tr>
+          <tr><td class="name">Sectie compact</td><td><code>72px / 44px</code></td></tr>
+          <tr><td class="name">Container max-breedte</td><td><code>1200px</code></td></tr>
+          <tr><td class="name">Buitenmarge (gutter)</td><td><code>64px / 20px</code></td></tr>
+          <tr><td class="name">Kaart-raster gap</td><td><code>22px</code></td></tr>
+          <tr><td class="name">Stat/proces gap</td><td><code>24–30px</code></td></tr>
+          <tr><td class="name">Kaart-binnenpadding</td><td><code>26px</code></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 BUTTONS -->
+<section class="block">
+  <div class="wrap">
+    <div class="head"><span class="num">07</span><h2>Knoppen</h2></div>
+    <p class="sub">Basis: Archivo <b>700</b>, <code>16px</code>, padding <code>15px 26px</code>, radius <code>999px</code>, rand <code>2px</code>, icoon-gap <code>10px</code>. Hover: <code>translateY(-2px)</code>.</p>
+    <div class="card">
+      <div class="btns">
+        <span class="btn btn-primary">Offerte aanvragen →</span>
+        <span class="btn btn-ghost">Onze diensten</span>
+      </div>
+      <div class="on-dark btns" style="margin-top:16px;">
+        <span class="btn btn-light">Lees de case →</span>
+        <span class="btn btn-outline-light">Bel ons</span>
+      </div>
+      <table style="margin-top:20px;">
+        <tr><th>Variant</th><th>Achtergrond</th><th>Tekst</th><th>Rand</th><th>Schaduw / hover</th></tr>
+        <tr><td class="name">Primary</td><td><code>#0A4A98</code></td><td><code>#FFFFFF</code></td><td>geen</td><td>Blue glow · hover bg <code>#083878</code></td></tr>
+        <tr><td class="name">Ghost</td><td>transparant</td><td><code>#14181F</code></td><td><code>2px #E4E9F0</code></td><td>hover rand+tekst <code>#0A4A98</code></td></tr>
+        <tr><td class="name">Light (op donker)</td><td><code>#FFFFFF</code></td><td><code>#083878</code></td><td>geen</td><td>hover Large-schaduw</td></tr>
+        <tr><td class="name">Outline-light</td><td>transparant</td><td><code>#FFFFFF</code></td><td><code>2px rgba(255,255,255,.4)</code></td><td>hover bg <code>rgba(255,255,255,.08)</code></td></tr>
+      </table>
+      <div class="note" style="margin-top:16px;">Maten: <b>klein</b> <code>11px 18px · 14px</code> · <b>standaard</b> <code>15px 26px · 16px</code> · <b>groot</b> <code>18px 32px · 17px</code></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 COMPONENTS -->
+<section class="block">
+  <div class="wrap">
+    <div class="head"><span class="num">08</span><h2>Componenten</h2></div>
+    <div class="grid two">
+
+      <div class="card">
+        <div style="font-family:var(--display);font-weight:700;margin-bottom:14px;">Pill / tag</div>
+        <span class="pill">White-glove</span>
+        <table style="margin-top:16px;">
+          <tr><td class="name">Padding</td><td><code>7px 14px</code></td></tr>
+          <tr><td class="name">Radius</td><td><code>999px</code></td></tr>
+          <tr><td class="name">Achtergrond</td><td><code>#EAF1FA</code></td></tr>
+          <tr><td class="name">Tekst</td><td>Archivo 600 · <code>13.5px</code> · <code>#083878</code></td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <div style="font-family:var(--display);font-weight:700;margin-bottom:14px;">Kaart</div>
+        <table>
+          <tr><td class="name">Achtergrond</td><td><code>#FFFFFF</code></td></tr>
+          <tr><td class="name">Rand</td><td><code>1px #E4E9F0</code></td></tr>
+          <tr><td class="name">Radius</td><td><code>22px</code></td></tr>
+          <tr><td class="name">Padding</td><td><code>26px</code></td></tr>
+          <tr><td class="name">Hover</td><td><code>translateY(-5px)</code> + Medium-schaduw</td></tr>
+          <tr><td class="name">Hover-rand</td><td><code>#DBE7F6</code></td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <div style="font-family:var(--display);font-weight:700;margin-bottom:14px;">Statistiek-cijfer</div>
+        <div class="statnum">99,4<span class="u">%</span></div>
+        <table style="margin-top:14px;">
+          <tr><td class="name">Cijfer</td><td>Archivo 800 · <code>60px</code> (mobiel 40) · lh 1 · tracking −0.03em</td></tr>
+          <tr><td class="name">Eenheid (%/+)</td><td><code>#6FA8E8</code> (op donker) / <code>#2868B8</code></td></tr>
+          <tr><td class="name">Label</td><td><code>15px</code> · <code>#B9CEE8</code> op donker</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <div style="font-family:var(--display);font-weight:700;margin-bottom:14px;">Formulierveld</div>
+        <div class="demo-field"><label>E-mail</label><input type="text" placeholder="naam@bedrijf.nl" /></div>
+        <table style="margin-top:16px;">
+          <tr><td class="name">Rand</td><td><code>1.5px #E4E9F0</code></td></tr>
+          <tr><td class="name">Radius</td><td><code>10px</code></td></tr>
+          <tr><td class="name">Achtergrond</td><td><code>#F5F7FA</code> · focus <code>#FFFFFF</code></td></tr>
+          <tr><td class="name">Padding</td><td><code>12px 14px</code> · tekst <code>15px</code></td></tr>
+          <tr><td class="name">Focus-rand</td><td><code>#0A4A98</code></td></tr>
+          <tr><td class="name">Label</td><td>Archivo 600 · <code>13px</code> · <code>#2B313B</code></td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <div style="font-family:var(--display);font-weight:700;margin-bottom:14px;">Rond stapnummer</div>
+        <div style="width:44px;height:44px;border-radius:50%;background:#0a4a98;color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:800;box-shadow:var(--shadow-blue);">1</div>
+        <table style="margin-top:16px;">
+          <tr><td class="name">Afmeting</td><td><code>44 × 44px</code>, cirkel</td></tr>
+          <tr><td class="name">Achtergrond</td><td><code>#0A4A98</code> + Blue glow</td></tr>
+          <tr><td class="name">Cijfer</td><td>Archivo 800 · <code>16px</code> · wit</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <div style="font-family:var(--display);font-weight:700;margin-bottom:14px;">Icoonvlak (feature/blurb)</div>
+        <div style="width:46px;height:46px;border-radius:12px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;box-shadow:var(--shadow-sm);color:var(--blue);font-weight:800;">◷</div>
+        <table style="margin-top:16px;">
+          <tr><td class="name">Klein (lijst)</td><td><code>46×46</code> · radius <code>12px</code> · wit + rand</td></tr>
+          <tr><td class="name">Groot (value-card)</td><td><code>54×54</code> · radius <code>15px</code> · bg <code>#0A4A98</code></td></tr>
+          <tr><td class="name">Icoonkleur</td><td><code>#0A4A98</code> (op wit) / wit (op blauw)</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 09 HEADER/FOOTER -->
+<section class="block" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="head"><span class="num">09</span><h2>Header, topbar &amp; footer</h2></div>
+    <div class="grid two">
+      <div class="card">
+        <div style="font-family:var(--display);font-weight:700;margin-bottom:12px;">Topbar</div>
+        <table>
+          <tr><td class="name">Achtergrond</td><td><code>#06264F</code></td></tr>
+          <tr><td class="name">Tekst</td><td><code>#CFE0F4</code> · <code>13.5px</code></td></tr>
+          <tr><td class="name">Hoogte</td><td><code>42px</code></td></tr>
+          <tr><td class="name">USP-tekst</td><td><code>#9EC3F0</code> · vinkje <code>#6FA8E8</code></td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div style="font-family:var(--display);font-weight:700;margin-bottom:12px;">Hoofd-navigatie</div>
+        <table>
+          <tr><td class="name">Hoogte</td><td><code>78px</code></td></tr>
+          <tr><td class="name">Achtergrond</td><td>wit 88% + blur (sticky)</td></tr>
+          <tr><td class="name">Logo-hoogte</td><td><code>42px</code></td></tr>
+          <tr><td class="name">Nav-links</td><td>Archivo 600 · <code>15.5px</code> · <code>#2B313B</code></td></tr>
+          <tr><td class="name">Link-hover</td><td>tekst <code>#0A4A98</code> · bg <code>#EAF1FA</code> · radius 9px</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div style="font-family:var(--display);font-weight:700;margin-bottom:12px;">Footer</div>
+        <table>
+          <tr><td class="name">Achtergrond</td><td><code>#06264F</code></td></tr>
+          <tr><td class="name">Tekst</td><td><code>#AEBFD6</code> · <code>15px</code></td></tr>
+          <tr><td class="name">Kop (h5)</td><td>Archivo 700 · <code>14px</code> · UPPERCASE · <code>0.08em</code> · wit</td></tr>
+          <tr><td class="name">Kolommen</td><td><code>1.4fr · 1fr · 1fr · 1fr</code></td></tr>
+          <tr><td class="name">Icoon</td><td><code>#6FA8E8</code></td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div style="font-family:var(--display);font-weight:700;margin-bottom:12px;">Eyebrow op donker</div>
+        <table>
+          <tr><td class="name">Tekstkleur</td><td><code>#9EC3F0</code></td></tr>
+          <tr><td class="name">Streepje</td><td><code>22×2px</code> · <code>#9EC3F0</code></td></tr>
+          <tr><td class="name">Rest</td><td>als gewone eyebrow (700 · 13px · 0.14em)</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

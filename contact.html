@@ -3,14 +3,57 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Contact — Out of the Box</title>
-<meta name="description" content="Vraag een vrijblijvende offerte aan of neem contact op. Binnen één werkdag antwoord. Bereikbaar ma–vr 08:00–18:00." />
+<title>Contact — Offerte aanvragen | Out Of The Box Verhuizingen</title>
+<meta name="description" content="Neem contact op voor een offerte. Philipstraat 12, 2722 NA Zoetermeer. Bel 06 18884241 of mail info@outofthebox-verhuizingen.nl." />
+<link rel="canonical" href="https://www.outofthebox-verhuizingen.nl/contact.html" />
+<meta name="robots" content="index, follow" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Out Of The Box Verhuizingen" />
+<meta property="og:locale" content="nl_NL" />
+<meta property="og:url" content="https://www.outofthebox-verhuizingen.nl/contact.html" />
+<meta property="og:title" content="Contact — Offerte aanvragen | Out Of The Box Verhuizingen" />
+<meta property="og:description" content="Neem contact op voor een offerte. Philipstraat 12, 2722 NA Zoetermeer. Bel 06 18884241 of mail info@outofthebox-verhuizingen.nl." />
+<meta property="og:image" content="https://www.outofthebox-verhuizingen.nl/assets/logo.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Contact — Offerte aanvragen | Out Of The Box Verhuizingen" />
+<meta name="twitter:description" content="Neem contact op voor een offerte. Philipstraat 12, 2722 NA Zoetermeer. Bel 06 18884241 of mail info@outofthebox-verhuizingen.nl." />
+<meta name="twitter:image" content="https://www.outofthebox-verhuizingen.nl/assets/logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="site.css" />
 <link rel="stylesheet" href="pages.css" />
 <link rel="icon" type="image/png" href="assets/logo-mark.png" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"MovingCompany","name":"Out Of The Box Verhuizingen","url":"https://www.outofthebox-verhuizingen.nl","logo":"https://www.outofthebox-verhuizingen.nl/assets/logo.png","image":"https://www.outofthebox-verhuizingen.nl/assets/logo.png","description":"Zakelijke verhuis- en transportpartner voor keuken- en meubelretailers.","telephone":"+31618884241","email":"info@outofthebox-verhuizingen.nl","address":{"@type":"PostalAddress","streetAddress":"Philipstraat 12","postalCode":"2722 NA","addressLocality":"Zoetermeer","addressCountry":"NL"},"areaServed":[{"@type":"Country","name":"Nederland"},{"@type":"Place","name":"Europa"}],"identifier":"KvK 78626676"}</script>
+<style>.hp{position:absolute!important;left:-9999px!important;opacity:0!important}.chip{font:inherit;cursor:pointer}.chip.aan{background:var(--blue,#0A4A98);border-color:var(--blue,#0A4A98);color:#fff}.form-melding{margin-top:18px;padding:14px 16px;border-radius:10px;font-size:15px;line-height:1.5}.form-melding.ok{background:#E8F3E8;color:#1E5B2A;border:1px solid #BEDCC2}.form-melding.fout{background:#FBEAEA;color:#8A2222;border:1px solid #EDC5C5}</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var form=document.getElementById('offerteForm'); if(!form) return;
+  var melding=document.getElementById('formMelding');
+  var chipVeld=document.getElementById('chipVeld');
+  var knop=form.querySelector('button[type="submit"]');
+  var chips=form.querySelectorAll('.chip');
+  chips.forEach(function(c){ c.addEventListener('click',function(){
+    c.classList.toggle('aan');
+    chipVeld.value=Array.prototype.filter.call(chips,function(x){return x.classList.contains('aan');}).map(function(x){return x.textContent.trim();}).join(', ');
+  });});
+  function toon(tekst,soort){ melding.textContent=tekst; melding.className='form-melding '+soort; melding.hidden=false; }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var origineel=knop.innerHTML;
+    knop.disabled=true; knop.textContent='Versturen…';
+    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Accept':'application/json'},body:new FormData(form)})
+      .then(function(r){return r.json();})
+      .then(function(d){
+        if(d.success){ form.reset(); chips.forEach(function(c){c.classList.remove('aan');}); chipVeld.value='';
+          toon('Bedankt, uw aanvraag is verstuurd. Wij reageren binnen één werkdag.','ok'); }
+        else { toon('Er ging iets mis bij het versturen. Mail ons gerust op info@outofthebox-verhuizingen.nl of bel 06 18884241.','fout'); }
+      })
+      .catch(function(){ toon('Er ging iets mis bij het versturen. Mail ons gerust op info@outofthebox-verhuizingen.nl of bel 06 18884241.','fout'); })
+      .finally(function(){ knop.disabled=false; knop.innerHTML=origineel; });
+  });
+});
+</script>
 </head>
 <body>
 
@@ -71,24 +114,30 @@
 <section class="section">
   <div class="wrap">
     <div class="contact-grid">
-      <form class="contact-form reveal" onsubmit="return false;">
+      <form class="contact-form reveal" id="offerteForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="VUL-HIER-JE-ACCESS-KEY-IN" />
+        <input type="hidden" name="subject" value="Nieuwe offerteaanvraag via de website" />
+        <input type="hidden" name="from_name" value="Out Of The Box website" />
+        <input type="hidden" name="onderwerp" id="chipVeld" value="" />
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" />
         <h2 class="h-md" style="font-size:26px;margin-bottom:6px;">Offerte aanvragen</h2>
         <p class="muted" style="margin-bottom:24px;">Vul het formulier in, dan nemen we snel contact met u op.</p>
         <div class="form-row">
-          <div class="field"><label>Naam</label><input type="text" placeholder="Uw naam" /></div>
-          <div class="field"><label>Bedrijf</label><input type="text" placeholder="Bedrijfsnaam" /></div>
+          <div class="field"><label for="veldNaam">Naam</label><input id="veldNaam" name="Naam" type="text" placeholder="Uw naam" required /></div>
+          <div class="field"><label for="veldBedrijf">Bedrijf</label><input id="veldBedrijf" name="Bedrijf" type="text" placeholder="Bedrijfsnaam" /></div>
         </div>
         <div class="form-row">
-          <div class="field"><label>E-mail</label><input type="email" placeholder="naam@bedrijf.nl" /></div>
-          <div class="field"><label>Telefoon</label><input type="tel" placeholder="06 12 34 56 78" /></div>
+          <div class="field"><label for="veldMail">E-mail</label><input id="veldMail" name="E-mail" type="email" placeholder="naam@bedrijf.nl" required /></div>
+          <div class="field"><label for="veldTel">Telefoon</label><input id="veldTel" name="Telefoon" type="tel" placeholder="06 12 34 56 78" /></div>
         </div>
         <div class="field"><label>Waar gaat het om?</label>
           <div class="chips">
-            <span class="chip">Keukens</span><span class="chip">Meubels</span><span class="chip">Compleet interieur</span><span class="chip">Kantoor</span><span class="chip">Anders</span>
+            <button type="button" class="chip">Keukens</button><button type="button" class="chip">Meubels</button><button type="button" class="chip">Compleet interieur</button><button type="button" class="chip">Kantoor</button><button type="button" class="chip">Anders</button>
           </div>
         </div>
-        <div class="field"><label>Toelichting</label><textarea rows="4" placeholder="Vertel ons over uw project — wat, waarheen en wanneer."></textarea></div>
-        <button class="btn btn-primary btn-lg" style="width:100%;">Verstuur aanvraag <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        <div class="field"><label for="veldToelichting">Toelichting</label><textarea id="veldToelichting" name="Toelichting" rows="4" placeholder="Vertel ons over uw project — wat, waarheen en wanneer."></textarea></div>
+        <div id="formMelding" class="form-melding" role="status" hidden="hidden"></div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">Verstuur aanvraag <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
         <p class="muted" style="font-size:13px;margin-top:14px;text-align:center;">Wij reageren binnen één werkdag. Uw gegevens worden vertrouwelijk behandeld.</p>
       </form>
 
