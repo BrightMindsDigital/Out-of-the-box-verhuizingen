@@ -156,6 +156,9 @@ p { margin: 0; }
   border-color: rgba(255,255,255,.12);
 }
 .ph.dark::after { background: rgba(255,255,255,.1); color: #b9cde8; }
+.ph.has-img{display:block;background:none;border-color:transparent;min-height:0}
+.ph.has-img::after{display:none}
+.ph.has-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .ratio-43 { aspect-ratio: 4/3; }
 .ratio-11 { aspect-ratio: 1/1; }
 .ratio-32 { aspect-ratio: 3/2; }
